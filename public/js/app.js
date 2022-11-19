@@ -37,8 +37,10 @@ function activeDisablePercentage(event) {
       document.getElementById("customPercentage").value = "";
       innerHTML("errorTip", "");
       //// remove the class at active buuttons
-      removeClass("activePercentage")
-      document.getElementById("customPercentage").classList.remove("warning_input")
+      removeClass("activePercentage");
+      document
+        .getElementById("customPercentage")
+        .classList.remove("warning_input");
       //Add the class and keep the value un session storage
       event.target.classList.add("activePercentage");
       sessionStorage.setItem("tip", event.target.value);
@@ -128,6 +130,16 @@ function calcTotalPerPerson(bill, tip, nPeople) {
   return bill / nPeople;
 }
 
+function calculateTipAfterInput(id, errorId, keySession, minValue) {
+  document
+    .getElementById(id)
+    .addEventListener("input", (e) =>
+      setPercentageInput(e.target, errorId, keySession, minValue)
+    );
+
+  calcTip();
+}
+
 document
   .getElementById("resetButton")
   .addEventListener("click", function (event) {
@@ -144,21 +156,6 @@ document
     }
   });
 
-document
-  .getElementById("customPercentage")
-  .addEventListener("input", function (event) {
-    setPercentageInput(event.target, "errorTip", "tip", 0);
-    calcTip();
-  });
-
-document
-  .getElementById("billInput")
-  .addEventListener("input", function (event) {
-    setPercentageInput(event.target, "errorBill", "bill", 1);
-    calcTip();
-  });
-
-document.getElementById("nPeople").addEventListener("input", function (event) {
-  setPercentageInput(event.target, "errorPeople", "nPeople", 1);
-  calcTip();
-});
+calculateTipAfterInput("customPercentage", "errorTip", "tip", 0);
+calculateTipAfterInput("billInput", "errorBill", "bill", 1);
+calculateTipAfterInput("nPeople", "errorPeople", "nPeople", 1);
