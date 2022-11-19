@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/tailwind.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <title>Tip calculator app</title>
+  </head>
+  <body class="font-SpaceMono bg-neutral_light_grayish_cyan font-bold">
+    <div class="w-full h-auto flex flex-col lg:h-screen lg:justify-center">
+      <p
+        class="w-full h-auto py-8 text-neutral_very_dark_cyan font-bold text-2xl tracking-[.5em] flex justify-center items-center"
+      >
+        SPLI <br />
+        TTER
+      </p>
+      <div
+        class="w-full h-4/5 bg-neutral_white rounded-t-3xl py-5 px-7 flex flex-col gap-10 lg:flex-row lg:w-[60rem] lg:my-0 lg:mx-auto lg:rounded-b-3xl lg:h-auto"
+      >
+        <div id="forms" class="flex flex-col gap-4 w-full h-3/5k">
+          <div class="w-full h-auto flex flex-col gap-2">
+            <p
+              class="font-bold text-lg text-neutral_dark_grayish_cyan flex justify-between"
+            >
+              Bill
+
+              <span
+                class="self-end text-left text-red-500 text-sm"
+                id="errorBill"
+              ></span>
+            </p>
+            <div class="relative">
+              <input
+                type="text"
+                dir="rtl"
+                class="bg-neutral_very_light_grayish_cyan w-full h-auto rounded-md rtl-grid py-3 px-7 text-neutral_very_dark_cyan font-bold text-2xl focus:ring-2 focus:ring-primary_strong_cyan border-0 focus-visible:outline-none"
+                placeholder="0"
+                id="billInput"
+              />
+              <img
+                src="./assets/images/icon-dollar.svg"
+                alt=""
+                class="absolute left-4 bottom-4 h-5"
+              />
+            </div>
+          </div>
+          <div class="w-full h-auto flex flex-col gap-4">
+            <p
+              class="font-bold text-lg text-neutral_dark_grayish_cyan flex justify-between"
+            >
+              Select tip %
+
+              <span
+                class="self-end text-left text-red-500 text-sm"
+                id="errorTip"
+              ></span>
+            </p>
+            <div
+              class="grid-cols-2 grid-rows-3 grid gap-4 lg:grid-cols-3 lg:grid-rows-2"
+            >
+              <button value="5" class="disabledPercentage">5%</button>
+              <button value="10" class="disabledPercentage">10%</button>
+              <button value="15" class="disabledPercentage">15%</button>
+              <button value="25" class="disabledPercentage">25%</button>
+              <button value="50" class="disabledPercentage">50%</button>
+              <input
+                id="customPercentage"
+                type="text"
+                dir="rtl"
+                class="bg-neutral_very_light_grayish_cyan w-full h-auto rounded-md rtl-grid py-3 px-4 text-neutral_very_dark_cyan font-bold text-2xl focus:ring-2 focus:ring-primary_strong_cyan border-0 focus-visible:outline-none placeholder:text-2xl placeholder:text-neutral_dark_grayish_cyan placeholder:text-center"
+                placeholder="Custom"
+              />
+            </div>
+          </div>
+          <div class="w-full h-auto flex flex-col gap-2">
+            <p
+              class="font-bold text-lg text-neutral_dark_grayish_cyan flex justify-between"
+            >
+              Number of people
+
+              <span
+                class="self-end text-left text-red-500 text-sm"
+                id="errorPeople"
+              >
+              </span>
+            </p>
+            <div class="relative">
+              <input
+                type="text"
+                dir="rtl"
+                class="bg-neutral_very_light_grayish_cyan w-full h-auto rounded-md rtl-grid py-3 px-7 text-neutral_very_dark_cyan font-bold text-2xl focus:ring-2 focus:ring-primary_strong_cyan border-0 focus-visible:outline-none"
+                placeholder="0"
+                id="nPeople"
+              />
+              <img
+                src="./assets/images/icon-person.svg"
+                alt=""
+                class="absolute left-4 bottom-4 h-5"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          id="results"
+          class="w-full h-auto rounded-xl bg-neutral_very_dark_cyan py-8 px-5 flex-col flex gap-2 lg:justify-between"
+        >
+          <div class="flex flex-col">
+            <div class="flex w-full h-auto justify-between">
+              <div class="flex flex-col">
+                <p class="text-lg text-white">Tip amount</p>
+                <p class="text-base text-neutral_grayish_cyan">/ person</p>
+              </div>
+              <span
+                id="tipAmount"
+                class="text-3xl text-primary_strong_cyan self-center"
+                >$0.00</span
+              >
+            </div>
+            <div class="flex w-full h-auto justify-between">
+              <div class="flex flex-col">
+                <p class="text-lg text-white">Total</p>
+                <p class="text-base text-neutral_grayish_cyan">/ person</p>
+              </div>
+              <span
+                id="totalPerPerson"
+                class="text-3xl text-primary_strong_cyan self-center"
+                >$0.00</span
+              >
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="flex w-full h-auto justify-between">
+              <div class="flex flex-col">
+                <p class="text-lg text-white">Total</p>
+                <p class="text-base text-neutral_grayish_cyan">/ account</p>
+              </div>
+              <span
+                id="totalAmount"
+                class="text-3xl text-primary_strong_cyan self-center"
+                >$0.00</span
+              >
+            </div>
+            <button
+              class="w-full h-auto rounded-lg bg-primary_strong_cyan opacity-10 text-2xl text-neutral_very_dark_cyan py-2 hover:bg-primary_strong_cyan hover:bg-opacity-80 hover:text-neutral_very_dark_cyan hover:opacity-100"
+              id="resetButton"
+            >
+              RESET
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
