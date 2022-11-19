@@ -38,8 +38,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Github repository](https://your-solution-url.com)
-- Live Site URL: [Github pages](https://your-live-site-url.com)
+- Solution URL: [Github repository](https://github.com/franc1sc0sv/tip_calculator_app.git)
+- Live Site URL: [Github pages](https://franc1sc0sv.github.io/tip_calculator_app/public/)
 
 ## My process
 
